@@ -5,8 +5,8 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 753863853239.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - REPOSITORY_URI=753863853239.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/code-pipeline-ecr
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 753863853239.dkr.ecr.us-east-1.amazonaws.com
+      - REPOSITORY_URI= 753863853239.dkr.ecr.us-east-1.amazonaws.com/code-pipeline-ecr:latest
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
@@ -16,13 +16,13 @@ phases:
       - mvn clean package
       - cp target/livedemo.war .
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t code-pipeline-ecr .
+      - docker tag code-pipeline-ecr:latest 753863853239.dkr.ecr.us-east-1.amazonaws.com/code-pipeline-ecr:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push 753863853239.dkr.ecr.us-east-1.amazonaws.com/code-pipeline-ecr:latest
       - echo Writing image definitions file...
       - printf '[{"name":"code-pipeline-ecr","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
