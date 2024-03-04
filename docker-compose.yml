@@ -2,6 +2,6 @@ version: '3.8'
 
 services:
   tomcat:
-    image: "163192526492.dkr.ecr.ap-south-1.amazonaws.com/ach_jenkins_test:${BUILD_NUMBER}"
+    image: "163192526492.dkr.ecr.ap-south-1.amazonaws.com/aig_jenkins_test:${BUILD_NUMBER}"
     ports:
       - "8080:8080"
