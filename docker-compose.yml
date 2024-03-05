@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   tomcat:
+    container_name: my-tomcat-container  # Custom container name
     image: "163192526492.dkr.ecr.ap-south-1.amazonaws.com/aig_jenkins_test:latest"
     ports:
       - "8080:8080"
