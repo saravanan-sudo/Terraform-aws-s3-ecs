@@ -2,7 +2,7 @@
 FROM tomcat:9.0.86-jdk21-corretto-al2
 
 # Remove the default ROOT application
-RUN rm -rf /usr/local/tomcat/webapps/ROOT
+RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy the WAR file from local machine into the webapps directory of Tomcat
 COPY target/livedemo.war /usr/local/tomcat/webapps/ROOT.war
