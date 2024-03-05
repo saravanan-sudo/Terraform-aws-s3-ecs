@@ -6,4 +6,4 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - /opt/saravanan/webapps:/usr/local/tomcat/webapps
+      - /opt/saravanan/webapps:/usr/local/tomcat/webapps/
