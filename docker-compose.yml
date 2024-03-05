@@ -5,3 +5,5 @@ services:
     image: "163192526492.dkr.ecr.ap-south-1.amazonaws.com/aig_jenkins_test:${BUILD_ID}"
     ports:
       - "8080:8080"
+    volumes:
+      - /opt/saravanan/webapps:/usr/local/tomcat/webapps
