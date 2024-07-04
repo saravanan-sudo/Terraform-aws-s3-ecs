@@ -13,8 +13,8 @@ phases:
       - mvn clean package
       - cp target/livedemo.war .
       - echo Building the Docker image...
-      - docker build -t testpoc .
-      - docker tag testpoc:latest 108693351311.dkr.ecr.us-east-2.amazonaws.com/testpoc:latest
+      - docker build -t testpoc02 .
+      - docker tag testpoc02:latest 108693351311.dkr.ecr.us-east-2.amazonaws.com/testpoc02:latest
   post_build:
     commands:
       - echo Build completed on `date`
