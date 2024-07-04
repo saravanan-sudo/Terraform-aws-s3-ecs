@@ -19,8 +19,8 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 108693351311.dkr.ecr.us-east-2.amazonaws.com/testpoc:latest
+      - docker push 108693351311.dkr.ecr.us-east-2.amazonaws.com/testpoc02:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"code-pipeline-ecr","imageUri":"%s"}]' 108693351311.dkr.ecr.us-east-2.amazonaws.com/testpoc:latest > imagedefinitions.json
+      - printf '[{"name":"code-pipeline-ecr","imageUri":"%s"}]' 108693351311.dkr.ecr.us-east-2.amazonaws.com/testpoc02:latest > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
